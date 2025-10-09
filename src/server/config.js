@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import './dbconfig.js'
 
 // 1- tomar un puerto
 // 2- configura los middlewares
