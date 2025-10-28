@@ -1,18 +1,24 @@
-import { Router } from "express"
-import { prueba, crearProducto, listarProductos, obtenerProducto, borrarProducto, editarProducto } from "../controllers/productos.controllers.js";
-
+import { Router } from "express";
+import {
+  borrarProductoPorID,
+  crearProducto,
+  editarProductoPorID,
+  listarProductos,
+  obtenerProducto,
+  prueba,
+} from "../controllers/productos.controllers.js";
+import validacionProducto from "../middleware/validacionProducto.js";
 /*
 GET
 POST
-PATH O PUT 
+PATH O PUT
 DELETE
 */
 
-const router = Router()
+const router = Router();
 
-router.route('/test').get(prueba)
-router.route('/').post(crearProducto).get(listarProductos)
-router.route('/:id').get(obtenerProducto).delete(borrarProducto).put(editarProducto)
-
+router.route("/test").get(prueba);
+router.route("/").post(validacionProducto,crearProducto).get(listarProductos);
+router.route("/:id").get(obtenerProducto).delete(borrarProductoPorID).put(editarProductoPorID)
 
 export default router;
